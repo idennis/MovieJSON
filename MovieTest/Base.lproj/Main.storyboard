@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Most Popular-->
@@ -48,21 +49,44 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvB-0s-KqT">
-                                            <rect key="frame" x="22" y="108" width="209.5" height="12"/>
+                                            <rect key="frame" x="22" y="108" width="21.5" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="209.5" id="MU1-CC-p3l"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="MU1-CC-p3l"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d1-yt-hBs">
+                                            <rect key="frame" x="59" y="105" width="30" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Odc-Dk-Owh"/>
+                                                <constraint firstAttribute="width" constant="30" id="bMu-FL-xxG"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Odc-Dk-Owh"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="7d1-yt-hBs" firstAttribute="leading" secondItem="gvB-0s-KqT" secondAttribute="trailing" constant="16" id="7Yk-f3-IgN"/>
                                         <constraint firstItem="JzH-Cs-0BA" firstAttribute="centerX" secondItem="mCp-9U-iKs" secondAttribute="centerX" id="8Hp-hh-UPx"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="JzH-Cs-0BA" secondAttribute="trailing" constant="352" id="ABb-q0-LtF"/>
+                                        <constraint firstItem="7d1-yt-hBs" firstAttribute="height" secondItem="gvB-0s-KqT" secondAttribute="height" multiplier="1.5" id="Bnl-A9-kVf"/>
                                         <constraint firstItem="JzH-Cs-0BA" firstAttribute="height" secondItem="mCp-9U-iKs" secondAttribute="height" id="FCg-nH-54U"/>
                                         <constraint firstItem="JzH-Cs-0BA" firstAttribute="width" secondItem="mCp-9U-iKs" secondAttribute="width" id="FSY-qZ-3Vv"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ecc-yV-9xc" secondAttribute="trailing" id="KYq-Gx-xet"/>
+                                        <constraint firstItem="7d1-yt-hBs" firstAttribute="centerY" secondItem="gvB-0s-KqT" secondAttribute="centerY" id="QBe-yc-8fs"/>
                                         <constraint firstItem="fEQ-ae-0mM" firstAttribute="width" secondItem="mCp-9U-iKs" secondAttribute="width" id="RDU-ZJ-kmV"/>
                                         <constraint firstItem="fEQ-ae-0mM" firstAttribute="height" secondItem="mCp-9U-iKs" secondAttribute="height" id="S9Q-Hl-zwy"/>
                                         <constraint firstItem="JzH-Cs-0BA" firstAttribute="centerY" secondItem="mCp-9U-iKs" secondAttribute="centerY" id="Vxb-6f-Ia8"/>
@@ -82,6 +106,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="movieCoverPhoto" destination="fEQ-ae-0mM" id="WU6-Sp-S81"/>
+                                    <outlet property="movieRatingLabel" destination="7d1-yt-hBs" id="QlX-p0-Lgj"/>
                                     <outlet property="movieTitleLabel" destination="ecc-yV-9xc" id="oqh-u9-dwI"/>
                                     <outlet property="movieYearLabel" destination="gvB-0s-KqT" id="lhV-ly-Enp"/>
                                 </connections>

@@ -14,6 +14,7 @@ class MovieTableViewCell: UITableViewCell {
     
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieYearLabel: UILabel!
+    @IBOutlet weak var movieRatingLabel: UILabel!
     
     @IBOutlet weak var movieCoverPhoto: UIImageView!
     

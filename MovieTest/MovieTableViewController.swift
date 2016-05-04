@@ -24,14 +24,14 @@ class MovieTableViewController: UITableViewController {
         super.viewDidLoad()
       
 
-
+        
         
 
         Alamofire.request(.GET, "https://api.themoviedb.org/3/movie/popular?api_key="+APIKEY).responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
                 
                 let swiftyJsonVar = JSON(responseData.result.value!)
-                
+                print(swiftyJsonVar)
                 
                 if let data = swiftyJsonVar["results"].arrayObject{
                     self.movieDictionaryArray = data as! [[String:AnyObject]]
@@ -52,7 +52,7 @@ class MovieTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        print (movieDictionaryArray.count)
         return movieDictionaryArray.count
     }
 
@@ -69,6 +69,8 @@ class MovieTableViewController: UITableViewController {
         
         cell.movieYearLabel?.text? = "RELEASED " + (formattedDate?.uppercaseString)!
         
+        let cellMovieRating = dict["vote_average"] as? Double
+        cell.movieRatingLabel?.text = String(format: "%.2g",(cellMovieRating)!)
         
         let baseURL = "http://image.tmdb.org/t/p/w500/"
         let picURL = dict["backdrop_path"] as? String
@@ -80,7 +82,8 @@ class MovieTableViewController: UITableViewController {
         if data != nil{
             cell.movieCoverPhoto?.image = UIImage(data: data!)
         }
-        cell.layoutMargins = UIEdgeInsetsZero;
+        cell.layoutMargins = UIEdgeInsetsZero
+        setRatingColor(cell, rating: cellMovieRating!)
         return cell
     }
     
@@ -137,7 +140,7 @@ class MovieTableViewController: UITableViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let s = dateFormatter.dateFromString(dateString)
-        print(s)
+        
         return s
     }
     
@@ -148,14 +151,33 @@ class MovieTableViewController: UITableViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
         let dateString = dateFormatter.stringFromDate(s)
-        print(dateString)
+        
         return dateString
     }
+    
+    
+    // MARK: Rating Indicator
+    func setRatingColor(cell:MovieTableViewCell,rating:Double){
+        
+        if (rating < 5){
+            cell.movieRatingLabel.layer.backgroundColor = UIColor.redColor().CGColor
+        }
+        else if (rating < 7){
+            cell.movieRatingLabel.layer.backgroundColor = UIColor(red: 0.97, green: 0.57, blue: 0.20, alpha: 1.00).CGColor
+        }
+        else if (rating > 6){
+            cell.movieRatingLabel.layer.backgroundColor = UIColor(red:0.45,green:0.70,blue:0.26,alpha:1.00).CGColor
+        }
+        cell.movieRatingLabel.layer.cornerRadius = 5
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
 
 }
