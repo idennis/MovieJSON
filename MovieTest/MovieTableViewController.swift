@@ -22,20 +22,16 @@ class MovieTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         
 
         Alamofire.request(.GET, "https://api.themoviedb.org/3/movie/popular?api_key="+APIKEY).responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
                 
                 let swiftyJsonVar = JSON(responseData.result.value!)
-                print(swiftyJsonVar)
+                
                 
                 if let data = swiftyJsonVar["results"].arrayObject{
                     self.movieDictionaryArray = data as! [[String:AnyObject]]
@@ -65,7 +61,14 @@ class MovieTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as! MovieTableViewCell
         var dict = movieDictionaryArray[indexPath.row]
         cell.movieTitleLabel?.text = dict["original_title"] as? String
-        cell.movieYearLabel?.text = dict["release_date"] as? String
+        
+        let dateFromJSON = dict["release_date"] as? String
+        
+        let NSDateValue = convertDateToNSDate(dateFromJSON!)
+        let formattedDate = convertNSDateToString(NSDateValue!)
+        
+        cell.movieYearLabel?.text? = "RELEASED " + (formattedDate?.uppercaseString)!
+        
         
         let baseURL = "http://image.tmdb.org/t/p/w500/"
         let picURL = dict["backdrop_path"] as? String
@@ -77,6 +80,7 @@ class MovieTableViewController: UITableViewController {
         if data != nil{
             cell.movieCoverPhoto?.image = UIImage(data: data!)
         }
+        cell.layoutMargins = UIEdgeInsetsZero;
         return cell
     }
     
@@ -126,6 +130,27 @@ class MovieTableViewController: UITableViewController {
     }
     */
     
+    
+    
+    // MARK: Time Formatter
+    func convertDateToNSDate(dateString:String)->NSDate?{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let s = dateFormatter.dateFromString(dateString)
+        print(s)
+        return s
+    }
+    
+    func convertNSDateToString(s:NSDate)->String?{
+        //CONVERT FROM NSDate to String
+        
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+        let dateString = dateFormatter.stringFromDate(s)
+        print(dateString)
+        return dateString
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
