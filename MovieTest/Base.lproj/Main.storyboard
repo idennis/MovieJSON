@@ -146,33 +146,39 @@
                                             <constraint firstAttribute="height" constant="200" id="d0x-UY-5LZ"/>
                                         </constraints>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverGradient-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="Aab-vS-kdX">
+                                        <rect key="frame" x="0.0" y="126" width="600" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="TfL-XQ-aIk"/>
+                                        </constraints>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AZI-TA-zb3" userLabel="Movie Poster">
-                                        <rect key="frame" x="20" y="215" width="100" height="141"/>
+                                        <rect key="frame" x="20" y="205" width="100" height="141"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="141" id="Oqm-sV-FgZ"/>
                                             <constraint firstAttribute="width" constant="100" id="q0B-dw-yrU"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="452" placeholderIntrinsicHeight="21" text="Movie Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lr-U8-Rjc">
-                                        <rect key="frame" x="20" y="388" width="560" height="21"/>
+                                        <rect key="frame" x="20" y="378" width="560" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="452" placeholderIntrinsicHeight="21" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZ3-DL-ut0">
-                                        <rect key="frame" x="128" y="241" width="452" height="21"/>
+                                        <rect key="frame" x="128" y="231" width="452" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmW-YA-zOt">
-                                        <rect key="frame" x="20" y="371" width="70.5" height="12"/>
+                                        <rect key="frame" x="20" y="361" width="70.5" height="12"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="452" placeholderIntrinsicHeight="21" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RI8-P5-Kqi">
-                                        <rect key="frame" x="128" y="215" width="452" height="21"/>
+                                        <rect key="frame" x="128" y="205" width="452" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -180,19 +186,21 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="kmW-YA-zOt" firstAttribute="top" secondItem="AZI-TA-zb3" secondAttribute="bottom" constant="15" id="5xe-jq-R88"/>
+                                    <constraint firstItem="Aab-vS-kdX" firstAttribute="bottom" secondItem="OUb-s3-Gw6" secondAttribute="bottom" constant="6" id="A0z-wh-2Qt"/>
+                                    <constraint firstItem="Aab-vS-kdX" firstAttribute="width" secondItem="OUb-s3-Gw6" secondAttribute="width" id="EFY-pT-wYU"/>
                                     <constraint firstItem="BZ3-DL-ut0" firstAttribute="leading" secondItem="RI8-P5-Kqi" secondAttribute="leading" id="GGe-W6-hwb"/>
                                     <constraint firstItem="RI8-P5-Kqi" firstAttribute="leading" secondItem="AZI-TA-zb3" secondAttribute="trailing" constant="8" id="SCJ-Ho-tuQ"/>
                                     <constraint firstAttribute="bottom" secondItem="2Lr-U8-Rjc" secondAttribute="bottom" constant="50" id="SzU-7A-aHc"/>
                                     <constraint firstAttribute="trailing" secondItem="OUb-s3-Gw6" secondAttribute="trailing" id="T3q-X5-5ee"/>
                                     <constraint firstItem="kmW-YA-zOt" firstAttribute="leading" secondItem="AZI-TA-zb3" secondAttribute="leading" id="Tq9-e1-fIX"/>
-                                    <constraint firstItem="AZI-TA-zb3" firstAttribute="top" secondItem="OUb-s3-Gw6" secondAttribute="bottom" constant="15" id="V7h-Xt-n6R"/>
+                                    <constraint firstItem="AZI-TA-zb3" firstAttribute="top" secondItem="OUb-s3-Gw6" secondAttribute="bottom" constant="5" id="V7h-Xt-n6R"/>
                                     <constraint firstItem="OUb-s3-Gw6" firstAttribute="top" secondItem="oxs-WZ-uVo" secondAttribute="top" id="d2i-qT-Ufc"/>
                                     <constraint firstItem="BZ3-DL-ut0" firstAttribute="top" secondItem="RI8-P5-Kqi" secondAttribute="bottom" constant="5" id="fRd-6f-CKc"/>
                                     <constraint firstItem="OUb-s3-Gw6" firstAttribute="centerX" secondItem="oxs-WZ-uVo" secondAttribute="centerX" id="gwv-nb-Lay"/>
                                     <constraint firstItem="2Lr-U8-Rjc" firstAttribute="leading" secondItem="kmW-YA-zOt" secondAttribute="leading" id="kcX-wX-IhY"/>
                                     <constraint firstItem="2Lr-U8-Rjc" firstAttribute="top" secondItem="kmW-YA-zOt" secondAttribute="bottom" constant="5" id="mT4-TQ-nZg"/>
                                     <constraint firstItem="OUb-s3-Gw6" firstAttribute="width" secondItem="oxs-WZ-uVo" secondAttribute="width" id="rHl-CS-IvZ"/>
-                                    <constraint firstItem="RI8-P5-Kqi" firstAttribute="top" secondItem="OUb-s3-Gw6" secondAttribute="bottom" constant="15" id="wEe-bI-vCZ"/>
+                                    <constraint firstItem="RI8-P5-Kqi" firstAttribute="top" secondItem="OUb-s3-Gw6" secondAttribute="bottom" constant="5" id="wEe-bI-vCZ"/>
                                     <constraint firstItem="OUb-s3-Gw6" firstAttribute="leading" secondItem="oxs-WZ-uVo" secondAttribute="leading" id="wLd-7T-WN0"/>
                                 </constraints>
                             </scrollView>
@@ -200,6 +208,7 @@
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="AZI-TA-zb3" secondAttribute="leading" id="8uq-Ve-bGB"/>
+                            <constraint firstItem="Aab-vS-kdX" firstAttribute="centerX" secondItem="5LF-tJ-QPi" secondAttribute="centerX" id="Bt4-Z0-dgg"/>
                             <constraint firstItem="oxs-WZ-uVo" firstAttribute="centerY" secondItem="5LF-tJ-QPi" secondAttribute="centerY" id="H0A-Xo-j8o"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Lr-U8-Rjc" secondAttribute="trailing" id="MQD-Rf-DG3"/>
                             <constraint firstItem="oxs-WZ-uVo" firstAttribute="width" secondItem="5LF-tJ-QPi" secondAttribute="width" id="S7s-jm-CCx"/>
@@ -243,6 +252,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="coverGradient-overlay" width="640" height="40"/>
         <image name="coverPhoto-gradient-overlay" width="300" height="75"/>
     </resources>
 </document>
