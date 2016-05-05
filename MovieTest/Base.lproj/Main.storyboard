@@ -146,7 +146,7 @@
                                             <constraint firstAttribute="height" constant="200" id="d0x-UY-5LZ"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverGradient-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="Aab-vS-kdX">
+                                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverGradient-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="Aab-vS-kdX">
                                         <rect key="frame" x="0.0" y="126" width="600" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="TfL-XQ-aIk"/>
