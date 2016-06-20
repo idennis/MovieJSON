@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		667C9A5E20168A026C599933 /* Pods_MovieTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BC2B104CAC29D867C09627 /* Pods_MovieTest.framework */; };
+		9557C6C61CDE10F1004CA9F5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9557C6C51CDE10F1004CA9F5 /* Movie.swift */; };
+		9557C6C91CDE115D004CA9F5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9557C6C81CDE115D004CA9F5 /* Model.swift */; };
 		957110BF1CDA0E5300C889B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957110BE1CDA0E5300C889B9 /* AppDelegate.swift */; };
 		957110C41CDA0E5300C889B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957110C21CDA0E5300C889B9 /* Main.storyboard */; };
 		957110C71CDA0E5300C889B9 /* MovieTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 957110C51CDA0E5300C889B9 /* MovieTest.xcdatamodeld */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9557C6C51CDE10F1004CA9F5 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		9557C6C81CDE115D004CA9F5 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		957110BB1CDA0E5300C889B9 /* MovieTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		957110BE1CDA0E5300C889B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		957110C31CDA0E5300C889B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,6 +59,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9557C6C71CDE10FA004CA9F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9557C6C81CDE115D004CA9F5 /* Model.swift */,
+				9557C6C51CDE10F1004CA9F5 /* Movie.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		957110B21CDA0E5300C889B9 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				957110BE1CDA0E5300C889B9 /* AppDelegate.swift */,
+				9557C6C71CDE10FA004CA9F5 /* Model */,
 				957110D31CDA119900C889B9 /* Controller */,
 				957110D41CDA11A600C889B9 /* View */,
 				957110C81CDA0E5300C889B9 /* Assets.xcassets */,
@@ -236,8 +250,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9557C6C91CDE115D004CA9F5 /* Model.swift in Sources */,
 				957110E01CDA157C00C889B9 /* MovieTableViewCell.swift in Sources */,
 				957110DE1CDA140300C889B9 /* MovieTableViewController.swift in Sources */,
+				9557C6C61CDE10F1004CA9F5 /* Movie.swift in Sources */,
 				957110C71CDA0E5300C889B9 /* MovieTest.xcdatamodeld in Sources */,
 				957110E21CDA69AB00C889B9 /* MovieDetailViewController.swift in Sources */,
 				957110BF1CDA0E5300C889B9 /* AppDelegate.swift in Sources */,
@@ -356,10 +372,13 @@
 			baseConfigurationReference = D4B222EEB03690DC61DFD401 /* Pods-MovieTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MovieTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dennishou.MovieTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -368,10 +387,13 @@
 			baseConfigurationReference = F8C6A0DEEFEC98D1DFB80F1C /* Pods-MovieTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MovieTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dennishou.MovieTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

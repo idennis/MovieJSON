@@ -17,7 +17,8 @@ class MovieTableViewController: UITableViewController {
     
     // Array of Dictionary
     var movieDictionaryArray:[[String:AnyObject]] = []
-
+    
+    //var movies = Model.sharedInstance.movies
     
     
     override func viewDidLoad() {
@@ -28,7 +29,7 @@ class MovieTableViewController: UITableViewController {
             if((responseData.result.value) != nil) {
                 
                 let swiftyJsonVar = JSON(responseData.result.value!)
-                print(swiftyJsonVar)
+                
                 
                 if let data = swiftyJsonVar["results"].arrayObject{
                     self.movieDictionaryArray = data as! [[String:AnyObject]]
@@ -37,6 +38,12 @@ class MovieTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             }
+            
+            else if ((responseData.result.value) == nil){
+                let alert = UIAlertController(title: "Uh oh", message: "We couldn't connect to the server, try switching on Wi-Fi or cellular data and restart the app.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
         }
         
     }
@@ -44,7 +51,6 @@ class MovieTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -88,12 +94,11 @@ class MovieTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as? MovieTableViewCell{
-            
             loadContentForCell(cell, indexPath: indexPath)
             return cell
         }
+        print ("in tableView cellForRowAtIndexPath")
         
-        print (MovieTableViewCell())
         return MovieTableViewCell()
     }
     

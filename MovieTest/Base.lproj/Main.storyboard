@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Wu-GD-csg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Wu-GD-csg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
@@ -28,10 +28,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="139.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fEQ-ae-0mM" userLabel="movieCoverPhoto">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fEQ-ae-0mM" userLabel="movieCoverPhoto">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="139.5"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverPhoto-gradient-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="JzH-Cs-0BA">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverPhoto-gradient-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="JzH-Cs-0BA">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="139.5"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="34" placeholderIntrinsicHeight="21" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecc-yV-9xc">
@@ -140,69 +140,81 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxs-WZ-uVo">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OUb-s3-Gw6" userLabel="Movie Cover Photo">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OUb-s3-Gw6" userLabel="Movie Cover Photo">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="8IC-ZA-Gj8"/>
                                             <constraint firstAttribute="height" constant="200" id="d0x-UY-5LZ"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AZI-TA-zb3" userLabel="Movie Poster">
-                                        <rect key="frame" x="20" y="220" width="100" height="141"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="141" id="Oqm-sV-FgZ"/>
-                                            <constraint firstAttribute="width" constant="100" id="q0B-dw-yrU"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="452" placeholderIntrinsicHeight="21" text="Movie Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lr-U8-Rjc">
-                                        <rect key="frame" x="20" y="393" width="560" height="21"/>
+                                        <rect key="frame" x="20" y="373" width="560" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverGradient-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="fWA-Mu-kwa">
+                                        <rect key="frame" x="0.0" y="100" width="600" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="MXR-H9-k8T"/>
+                                        </constraints>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="452" placeholderIntrinsicHeight="21" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZ3-DL-ut0">
-                                        <rect key="frame" x="128" y="246" width="452" height="21"/>
+                                        <rect key="frame" x="128" y="226" width="452" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmW-YA-zOt">
-                                        <rect key="frame" x="20" y="376" width="71" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SYNOPSIS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmW-YA-zOt">
+                                        <rect key="frame" x="20" y="356" width="53" height="12"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="452" placeholderIntrinsicHeight="21" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RI8-P5-Kqi">
-                                        <rect key="frame" x="128" y="220" width="452" height="21"/>
+                                        <rect key="frame" x="128" y="200" width="452" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="452" placeholderIntrinsicHeight="21" text="Genres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNB-eD-HjA">
+                                        <rect key="frame" x="128" y="250" width="452" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AZI-TA-zb3" userLabel="Movie Poster">
+                                        <rect key="frame" x="20" y="200" width="100" height="141"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="141" id="Oqm-sV-FgZ"/>
+                                            <constraint firstAttribute="width" constant="100" id="q0B-dw-yrU"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="fWA-Mu-kwa" firstAttribute="width" secondItem="OUb-s3-Gw6" secondAttribute="width" id="4eu-Ws-nS5"/>
                                     <constraint firstItem="kmW-YA-zOt" firstAttribute="top" secondItem="AZI-TA-zb3" secondAttribute="bottom" constant="15" id="5xe-jq-R88"/>
+                                    <constraint firstItem="pNB-eD-HjA" firstAttribute="leading" secondItem="RI8-P5-Kqi" secondAttribute="leading" id="9aB-wt-ru3"/>
                                     <constraint firstItem="BZ3-DL-ut0" firstAttribute="leading" secondItem="RI8-P5-Kqi" secondAttribute="leading" id="GGe-W6-hwb"/>
-                                    <constraint firstItem="AZI-TA-zb3" firstAttribute="top" secondItem="OUb-s3-Gw6" secondAttribute="bottom" constant="20" id="KHn-Kd-xhh"/>
-                                    <constraint firstItem="RI8-P5-Kqi" firstAttribute="top" secondItem="OUb-s3-Gw6" secondAttribute="bottom" constant="20" id="S4e-pv-y2F"/>
+                                    <constraint firstItem="fWA-Mu-kwa" firstAttribute="bottom" secondItem="OUb-s3-Gw6" secondAttribute="bottom" id="Iaf-nv-lkC"/>
+                                    <constraint firstItem="AZI-TA-zb3" firstAttribute="top" secondItem="OUb-s3-Gw6" secondAttribute="bottom" id="KHn-Kd-xhh"/>
+                                    <constraint firstAttribute="trailing" secondItem="pNB-eD-HjA" secondAttribute="trailing" constant="20" id="LL3-hg-TUk"/>
+                                    <constraint firstItem="fWA-Mu-kwa" firstAttribute="centerX" secondItem="OUb-s3-Gw6" secondAttribute="centerX" id="LSf-Ye-5YK"/>
+                                    <constraint firstItem="RI8-P5-Kqi" firstAttribute="top" secondItem="OUb-s3-Gw6" secondAttribute="bottom" id="S4e-pv-y2F"/>
                                     <constraint firstItem="RI8-P5-Kqi" firstAttribute="leading" secondItem="AZI-TA-zb3" secondAttribute="trailing" constant="8" id="SCJ-Ho-tuQ"/>
                                     <constraint firstAttribute="bottom" secondItem="2Lr-U8-Rjc" secondAttribute="bottom" constant="50" id="SzU-7A-aHc"/>
                                     <constraint firstAttribute="trailing" secondItem="OUb-s3-Gw6" secondAttribute="trailing" id="T3q-X5-5ee"/>
                                     <constraint firstItem="kmW-YA-zOt" firstAttribute="leading" secondItem="AZI-TA-zb3" secondAttribute="leading" id="Tq9-e1-fIX"/>
-                                    <constraint firstItem="AZI-TA-zb3" firstAttribute="top" secondItem="OUb-s3-Gw6" secondAttribute="bottom" constant="5" id="V7h-Xt-n6R"/>
                                     <constraint firstItem="OUb-s3-Gw6" firstAttribute="top" secondItem="oxs-WZ-uVo" secondAttribute="top" id="d2i-qT-Ufc"/>
+                                    <constraint firstItem="pNB-eD-HjA" firstAttribute="top" secondItem="BZ3-DL-ut0" secondAttribute="bottom" constant="3" id="eeu-Ww-syL"/>
                                     <constraint firstItem="BZ3-DL-ut0" firstAttribute="top" secondItem="RI8-P5-Kqi" secondAttribute="bottom" constant="5" id="fRd-6f-CKc"/>
                                     <constraint firstItem="OUb-s3-Gw6" firstAttribute="centerX" secondItem="oxs-WZ-uVo" secondAttribute="centerX" id="gwv-nb-Lay"/>
                                     <constraint firstItem="2Lr-U8-Rjc" firstAttribute="leading" secondItem="kmW-YA-zOt" secondAttribute="leading" id="kcX-wX-IhY"/>
                                     <constraint firstItem="2Lr-U8-Rjc" firstAttribute="top" secondItem="kmW-YA-zOt" secondAttribute="bottom" constant="5" id="mT4-TQ-nZg"/>
                                     <constraint firstItem="OUb-s3-Gw6" firstAttribute="width" secondItem="oxs-WZ-uVo" secondAttribute="width" id="rHl-CS-IvZ"/>
-                                    <constraint firstItem="RI8-P5-Kqi" firstAttribute="top" secondItem="OUb-s3-Gw6" secondAttribute="bottom" constant="5" id="wEe-bI-vCZ"/>
                                     <constraint firstItem="OUb-s3-Gw6" firstAttribute="leading" secondItem="oxs-WZ-uVo" secondAttribute="leading" id="wLd-7T-WN0"/>
+                                    <constraint firstItem="OUb-s3-Gw6" firstAttribute="top" secondItem="oxs-WZ-uVo" secondAttribute="top" id="z9N-b9-Pwr"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="V7h-Xt-n6R"/>
-                                        <exclude reference="wEe-bI-vCZ"/>
-                                    </mask>
-                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
@@ -220,6 +232,7 @@
                         <outlet property="selectedMovieCoverPhoto" destination="OUb-s3-Gw6" id="8A6-88-nZK"/>
                         <outlet property="selectedMovieDate" destination="BZ3-DL-ut0" id="aaB-FJ-T6q"/>
                         <outlet property="selectedMovieDesc" destination="2Lr-U8-Rjc" id="Ko4-bK-sbW"/>
+                        <outlet property="selectedMovieGenre" destination="pNB-eD-HjA" id="XW6-rd-4xY"/>
                         <outlet property="selectedMoviePoster" destination="AZI-TA-zb3" id="fqu-t8-qAK"/>
                         <outlet property="selectedMovieTitle" destination="RI8-P5-Kqi" id="LUP-4n-hEn"/>
                     </connections>
@@ -251,6 +264,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="coverGradient-overlay" width="640" height="40"/>
         <image name="coverPhoto-gradient-overlay" width="300" height="75"/>
     </resources>
 </document>
