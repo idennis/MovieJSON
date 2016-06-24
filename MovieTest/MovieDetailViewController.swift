@@ -22,12 +22,22 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var selectedMovieTitle: UILabel!
     @IBOutlet weak var selectedMovieDate: UILabel!
     @IBOutlet weak var selectedMovieDesc: UILabel!
-    @IBOutlet weak var selectedMovieGenre: UILabel!
     
+    @IBOutlet weak var showMoreButton: UIButton!
+    var selectedMovieOverview:String = ""
+    var showMore:Bool = false
+    
+    
+    var movieCast:[[String:AnyObject]] = []
+    var movieCrew:[[String:AnyObject]] = []
+    
+    @IBOutlet weak var movieDirector: UILabel!
+    
+    
+    @IBOutlet weak var selectedMovieGenre: UILabel!
     var selectedMovie:[String:AnyObject]?
     var fullGenreDict:[[String:AnyObject]]?
     var movieGenreDict:[Int]?
-    
     
     
     // MARK: On Load
@@ -37,33 +47,76 @@ class MovieDetailViewController: UIViewController {
         stylePoster()
         
         if let movie = selectedMovie{
-            
             self.selectedMovie = movie
             
-            print(movie)
+            
             selectedMovieTitle.text? = (movie["title"] as? String)!
+            
+            let movieId:String = String(movie["id"]!)
+            getCastCrew(movieId)
+            
             setReleaseDate((movie["release_date"] as? String)!)
             
-            selectedMovieDesc.text? = (movie["overview"] as? String)!
             
+            selectedMovieOverview = (movie["overview"] as? String)!
+            loadDescription(selectedMovieOverview)
+            
+            getDirector()
             getCoverPhoto()
-            fullGenreDict = retrieveGenreNames()
-            movieGenreDict = movie["genre_ids"] as? [Int]
             
+            //fullGenreDict = retrieveGenreNames()
+            //movieGenreDict = movie["genre_ids"] as? [Int]
             
             //selectedMovieGenre.text? = (movie["genres"] as? String)!
-            
-            matchGenres(fullGenreDict, selectedMovieGenres: movieGenreDict)
+            //matchGenres(fullGenreDict, selectedMovieGenres: movieGenreDict)
             
             
             
         }
         
-        
-        
-        
     }
 
+    
+    
+    // MARK: - Cast and Crew
+    func getCastCrew(movieID:String){
+        let reqString = "https://api.themoviedb.org/3/movie/"+movieID+"/credits?api_key="+self.APIKEY
+        Alamofire.request(.GET, reqString).responseJSON { (responseData) -> Void in
+            if((responseData.result.value) != nil) {
+                
+                
+                let swiftyJsonVar = JSON(responseData.result.value!)
+                
+                if let castData = swiftyJsonVar["cast"].arrayObject{
+                    self.movieCast = castData as! [[String:AnyObject]]
+                    
+                }
+                
+                if let data = swiftyJsonVar["crew"].arrayObject{
+                    self.movieCrew = data as! [[String:AnyObject]]
+                    //print(self.movieCrew)
+                }
+            }
+                
+            else if ((responseData.result.value) == nil){
+                let alert = UIAlertController(title: "Uh oh", message: "We couldn't connect to the server, try switching on Wi-Fi or cellular data and restart the app.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
+    // Get Director
+    func getDirector(){
+        
+        print("SEPARATOR\n\n\n\n\n\n\n")
+        let dict = self.movieCrew
+        print(dict)
+    }
+    
+    
+    
     // MARK: - Styles
     // Image
     func stylePoster(){
@@ -111,13 +164,38 @@ class MovieDetailViewController: UIViewController {
         properFormatter.dateFormat = "dd MMMM, YYYY"
         let dateString = properFormatter.stringFromDate(dateValue!)
         
-        let formattedDate:String = "RELEASED "+(dateString.uppercaseString)
+        let formattedDate:String = "Released "+(dateString)
         
         selectedMovieDate.text = formattedDate
     }
     
     
+    // MARK: - Show More and Description
+    func loadDescription(overview:String){
+        self.selectedMovieDesc.text? = overview
+        self.selectedMovieDesc?.numberOfLines = 4
+        self.selectedMovieDesc?.lineBreakMode = .ByTruncatingTail
+        self.selectedMovieDesc?.sizeToFit()
+    }
     
+    @IBAction func showMoreTapped(sender: AnyObject) {
+        
+        if (self.showMore == false){
+            self.selectedMovieDesc?.numberOfLines = 0
+            self.selectedMovieDesc?.sizeToFit()
+            showMoreButton.setTitle("SHOW LESS", forState: UIControlState.Normal)
+            self.showMore = true
+        }
+        
+        else{
+            self.selectedMovieDesc?.numberOfLines = 4
+            self.selectedMovieDesc?.lineBreakMode = .ByTruncatingTail
+            self.selectedMovieDesc?.sizeToFit()
+            showMoreButton.setTitle("SHOW MORE", forState: UIControlState.Normal)
+            self.showMore = false
+        }
+    }
+
     
     // MARK : - Genre
     // Genre

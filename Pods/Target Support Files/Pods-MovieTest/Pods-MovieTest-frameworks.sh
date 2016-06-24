@@ -85,9 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-MovieTest/Alamofire.framework"
+  install_framework "Pods-MovieTest/Haneke.framework"
   install_framework "Pods-MovieTest/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-MovieTest/Alamofire.framework"
+  install_framework "Pods-MovieTest/Haneke.framework"
   install_framework "Pods-MovieTest/SwiftyJSON.framework"
 fi

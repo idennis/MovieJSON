@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Haneke
 
 class MovieTableViewController: UITableViewController {
 
@@ -17,6 +18,7 @@ class MovieTableViewController: UITableViewController {
     
     // Array of Dictionary
     var movieDictionaryArray:[[String:AnyObject]] = []
+    var datas: [Haneke.JSON] = []
     
     //var movies = Model.sharedInstance.movies
     
@@ -55,7 +57,7 @@ class MovieTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print (movieDictionaryArray.count)
+        
         return movieDictionaryArray.count
     }
 
@@ -83,7 +85,8 @@ class MovieTableViewController: UITableViewController {
             let data = NSData(contentsOfURL: url!)
             
             if data != nil{
-                cell.movieCoverPhoto?.image = UIImage(data: data!)
+                cell.movieCoverPhoto.hnk_setImageFromURL(url!)
+//                cell.movieCoverPhoto?.image = UIImage(data: data!)
             }
             cell.layoutMargins = UIEdgeInsetsZero
             setRatingColor(cell, rating: cellMovieRating!)
@@ -97,7 +100,6 @@ class MovieTableViewController: UITableViewController {
             loadContentForCell(cell, indexPath: indexPath)
             return cell
         }
-        print ("in tableView cellForRowAtIndexPath")
         
         return MovieTableViewCell()
     }
@@ -138,8 +140,6 @@ class MovieTableViewController: UITableViewController {
     
     func convertNSDateToString(s:NSDate)->String?{
         //CONVERT FROM NSDate to String
-        
-        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
         let dateString = dateFormatter.stringFromDate(s)

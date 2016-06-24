@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class MovieTableViewCell: UITableViewCell {
 
@@ -17,6 +18,8 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieRatingLabel: UILabel!
     
     @IBOutlet weak var movieCoverPhoto: UIImageView!
+
+    var url:String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,4 +32,8 @@ class MovieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+//    func setImage(url: String){
+//        let imageURL = NSURL(string: url)
+//
+//    }
 }
