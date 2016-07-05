@@ -26,7 +26,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var showMoreButton: UIButton!
     var selectedMovieOverview:String = ""
     var showMore:Bool = false
-    
+    var smallOverview:Bool = false
     
     var movieCast:[[String:AnyObject]] = []
     var movieCrew:[[String:AnyObject]] = []
@@ -74,6 +74,10 @@ class MovieDetailViewController: UIViewController {
             
         }
         
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
     }
 
     
@@ -176,24 +180,54 @@ class MovieDetailViewController: UIViewController {
         self.selectedMovieDesc?.numberOfLines = 4
         self.selectedMovieDesc?.lineBreakMode = .ByTruncatingTail
         self.selectedMovieDesc?.sizeToFit()
+        
+        if (countDescLines(self.selectedMovieDesc) <= 3){
+            self.showMore = false
+            self.smallOverview = true
+            showMoreButton.setTitle("", forState: UIControlState.Normal)
+        }
     }
     
     @IBAction func showMoreTapped(sender: AnyObject) {
         
-        if (self.showMore == false){
+        if (self.showMore == false && self.smallOverview == false){
+            print("in first")
             self.selectedMovieDesc?.numberOfLines = 0
             self.selectedMovieDesc?.sizeToFit()
             showMoreButton.setTitle("SHOW LESS", forState: UIControlState.Normal)
             self.showMore = true
         }
         
+        
         else{
+            print("in second")
             self.selectedMovieDesc?.numberOfLines = 4
             self.selectedMovieDesc?.lineBreakMode = .ByTruncatingTail
             self.selectedMovieDesc?.sizeToFit()
             showMoreButton.setTitle("SHOW MORE", forState: UIControlState.Normal)
             self.showMore = false
         }
+    }
+    
+    
+    func countDescLines(label:UILabel)->Int{
+        if let text = label.text{
+            // cast text to NSString so we can use sizeWithAttributes
+            let myText = text as NSString
+            
+            //Set attributes
+            let attributes = [NSFontAttributeName : UIFont.systemFontOfSize(UIFont.systemFontSize())]
+            print(attributes)
+            //Calculate the size of your UILabel by using the systemfont and the paragraph we created before. Edit the font and replace it with yours if you use another
+            let labelSize = myText.boundingRectWithSize(CGSizeMake(label.bounds.width, CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil)
+            
+            //Now we return the amount of lines using the ceil method
+            let lines = ceil(CGFloat(labelSize.height) / label.font.lineHeight)
+            print(Int(lines))
+            return Int(lines)
+        }
+        
+        return 0
     }
 
     

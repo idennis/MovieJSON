@@ -15,6 +15,7 @@ struct Movie{
     var movieTitle:String?
     var movieDescription:String?
     var movieReleaseDate:String?
+    
 //    var movieGenres:[String]?
     
     

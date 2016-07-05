@@ -18,35 +18,25 @@ class MovieTableViewController: UITableViewController {
     
     // Array of Dictionary
     var movieDictionaryArray:[[String:AnyObject]] = []
-    var datas: [Haneke.JSON] = []
+    var pageNo:Int = 1
     
-    //var movies = Model.sharedInstance.movies
+    // Movie array for caching
+    var movies = Model.sharedInstance.movies
     
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    var loadingMoreData:Bool = false
+    var refreshPage:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+        spinner.startAnimating()
+        
+        loadMovies()
 
-        Alamofire.request(.GET, "https://api.themoviedb.org/3/movie/popular?api_key="+APIKEY).responseJSON { (responseData) -> Void in
-            if((responseData.result.value) != nil) {
-                
-                let swiftyJsonVar = JSON(responseData.result.value!)
-                
-                
-                if let data = swiftyJsonVar["results"].arrayObject{
-                    self.movieDictionaryArray = data as! [[String:AnyObject]]
-                }
-                if self.movieDictionaryArray.count > 0{
-                    self.tableView.reloadData()
-                }
-            }
-            
-            else if ((responseData.result.value) == nil){
-                let alert = UIAlertController(title: "Uh oh", message: "We couldn't connect to the server, try switching on Wi-Fi or cellular data and restart the app.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
-        }
+        
         
     }
 
@@ -57,10 +47,55 @@ class MovieTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        self.refreshPage = movieDictionaryArray.count
         return movieDictionaryArray.count
     }
 
+    
+    // MARK: - Load via Alamo & SwiftyJSON
+    func loadMovies(){
+        
+        
+        Alamofire.request(.GET, "https://api.themoviedb.org/3/movie/popular?page="+String(self.pageNo)+"&api_key="+APIKEY).progress({ (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
+            
+            self.spinner.startAnimating()
+            self.loadingMoreData = false
+            
+        }).responseJSON { (responseData) -> Void in
+            
+            if((responseData.result.value) != nil) {
+                
+                self.spinner.stopAnimating()
+                
+                let swiftyJsonVar = JSON(responseData.result.value!)
+                
+                
+                if let data = swiftyJsonVar["results"].arrayObject{
+                    
+                    self.movieDictionaryArray += data as! [[String:AnyObject]]
+                }
+                
+                
+                
+                if self.movieDictionaryArray.count > 0{
+                    self.tableView.reloadData()
+                    
+//                    let newIndexPath = NSIndexPath(forRow: self.movieDictionaryArray.count, inSection: 0)
+//                    self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Left)
+
+                }
+                
+                
+                
+            }
+                
+            else if ((responseData.result.value) == nil){
+                let alert = UIAlertController(title: "Uh oh", message: "We couldn't connect to the server, try switching on Wi-Fi or cellular data and restart the app.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+    }
     
     func loadContentForCell(cell: MovieTableViewCell, indexPath: NSIndexPath){
         var dict = movieDictionaryArray[indexPath.row]
@@ -85,7 +120,7 @@ class MovieTableViewController: UITableViewController {
             let data = NSData(contentsOfURL: url!)
             
             if data != nil{
-                cell.movieCoverPhoto.hnk_setImageFromURL(url!)
+            //    cell.movieCoverPhoto.hnk_setImageFromURL(url!)
 //                cell.movieCoverPhoto?.image = UIImage(data: data!)
             }
             cell.layoutMargins = UIEdgeInsetsZero
@@ -94,8 +129,15 @@ class MovieTableViewController: UITableViewController {
     }
     
     
+    // MARK : - Loading Table View
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+
+        if !loadingMoreData && indexPath.row == refreshPage - 1{
+            loadingMoreData = true
+            self.pageNo += 1
+            loadMovies()
+        }
+
         if let cell = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as? MovieTableViewCell{
             loadContentForCell(cell, indexPath: indexPath)
             return cell
